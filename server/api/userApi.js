@@ -41,9 +41,11 @@ router.post('/register', (req, res) => {
                 if(err) {
                     console.log(err);
                 }
-                console.log(result);
                 if(result) {
-                    res.send(200, {msg: '成功注册'})
+                    res.json({
+                        code: 200,
+                        msg: '成功注册'
+                    })
                 }
             })
         }
@@ -80,7 +82,6 @@ router.post('/login',(req, res) => {
                 if(err) {
                     console.log(err);
                 }
-                console.log(result);
                 if(result[0]===undefined) {
                     res.send({msg: '密码错误'});
                 }

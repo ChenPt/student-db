@@ -8,7 +8,7 @@ var sqlMap = {
     },
     student: {
 
-        add: 'insert into student(sno, sname, sex, sbirthday, dno, spno, class_no, phone,)',
+        add: 'insert into student(sno, sname, sex, sbirthday, dno, spno, class_no, phone, address, enroll_day) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ',
         delete: 'DELETE FROM student where ? = ?',
         select_all: 'SELECT * from student where sno = ?',
         update: 'UPDATE student SET s'
