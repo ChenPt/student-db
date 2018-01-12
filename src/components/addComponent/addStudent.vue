@@ -19,7 +19,7 @@
 								</el-select>
 							</el-form-item>
 							<el-form-item label="出生日期">
-								<el-date-picker type="date" placeholder="选择日期" v-model="form.sbirthday" style="width: 100%;"></el-date-picker>
+								<el-date-picker type="date" placeholder="选择日期" value-format="yyyy-MM-dd" v-model="form.sbirthday" style="width: 100%;"></el-date-picker>
 							</el-form-item>
 							<el-form-item label="院系号码">
 								<el-input v-model="form.dno"></el-input>
@@ -39,13 +39,13 @@
 								<el-input v-model="form.address"></el-input>
 							</el-form-item>
 							<el-form-item label="入学日期">
-								<el-date-picker type="date" placeholder="选择日期" v-model="form.enroll_day" style="width: 100%;"></el-date-picker>
+								<el-date-picker type="date" placeholder="选择日期" value-format="yyyy-MM-dd" v-model="form.enroll_day" style="width: 100%;"></el-date-picker>
 							</el-form-item>
 						</el-col>
 					</el-row>
 				</el-form>
 			</el-col>
-			<el-col :span="4">
+			<el-col :span="8">
 				<el-button @click="onSubmit" type="primary">提交</el-button>
 			</el-col>
 		</el-row>
@@ -63,13 +63,11 @@
 					sno: '',
 					sname: '',
 					sex: '',
-					sbirthday: '',
 					dno: '',
 					spno: '',
 					class_no: '',
 					phone: '',
-					address: '',
-					enroll_day: '',
+					address: ''
 				}
 			}
 		},
@@ -77,7 +75,7 @@
 		},
 		methods: {
 			getdno(attrArr, table) {
-				this.$http.post('/api/student/selectSth', {
+				this.$http.post('/api/select/selectSth', {
 					attrArr: ['dno'],
 					table: 'department'
 				}).then((res) => {
@@ -92,18 +90,7 @@
 				this.addS();
 			},
 			addS() {
-				this.$http.post('/api/student/addStudent', {
-					sno: this.form.sno,
-					sname: this.form.sname,
-					sex: this.form.sex,
-					sbirthday: this.form.sbirthday,
-					dno: this.form.dno,
-					spno: this.form.spno,
-					class_no: this.form.class_no,
-					phone: this.form.phone,
-					address: this.form.address,
-					enroll_day: this.form.enroll_day
-				}).then((res) => {
+				this.$http.post('/api/add/addStudent', this.form).then((res) => {
 					if(res.body.code === 5000) {
 						this.showErr(res.body.msg)
 					}
@@ -123,7 +110,7 @@
 					showClose: true,
 					message: msg,
 					type: 'error',
-					duration: 0
+					duration: 3000
 				})
 			}
 		}

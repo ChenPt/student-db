@@ -25,64 +25,6 @@ var jsonWrite = function(res, ret) {
 };
 
 
-router.get('/selectAll',(req, res) => {
-    var params = req.body;
-    conn.query('SELECT * from student order by sno', function(err, result) {
-        if(err) {
-            console.log(err);
-            res.send(500,{error: '出错'});
-        }
-        if(result) {
-            jsonWrite(res, result);
-        }
-    })
-})
-
-router.post('/selectBykey',(req, res) => {
-    var params = req.body;
-    conn.query(`SELECT * from student where ${params.key} = ?`,params.value,function(err, result) {
-        if(err) {
-            console.log(err);
-        }
-        if(result) {
-            jsonWrite(res, result);
-        }
-    })
-})
-
-router.post('/selectBytwoKey',(req, res) => {
-    var params = req.body;
-    conn.query(`SELECT * from student where ${params.key1} = ? and ${params.key2} = ?`,[params.value1,params.value2],function(err, result) {
-        if(err) {
-            console.log(err);
-        }
-        if(result) {
-            jsonWrite(res, result);
-        }
-    })
-})
-
-router.post('/selectSth',(req, res) => {
-    var params = req.body;
-    var idx = params.attrArr.length;
-    var attr = params.attrArr[0];
-    for(var j = 1; j < idx; j++){
-        if(j === idx-1) {
-            attr = attr+params.attrArr[0];
-        }
-        attr = attr+params.attrArr[0]+',';
-    }
-    conn.query(`SELECT ${attr} from ${params.table}`, function(err, result) {
-        if(err) {
-            console.log(err);
-            
-        }
-        if(result) {
-            jsonWrite(res, result);
-        }
-    })
-})
-
 router.post('/addStudent',(req, res) => {
     var sql = $sql.student.add;
     var params = req.body;

@@ -24,11 +24,18 @@ var jsonWrite = function(res, ret) {
     }
 };
 
-// 注册接口
+// 注册接口 添加用户
 router.post('/register', (req, res) => {
     var sql = $sql.user.add;
     var sql_name = $sql.user.select_name;
     var params = req.body;
+    /*
+    params: {
+        username: '...',
+        password: '...',  //md5处理
+        user_type: 0
+    }
+    */
     console.log(params);
     conn.query(sql_name, params.username, function(err, result) {
         if (err) {
@@ -37,7 +44,7 @@ router.post('/register', (req, res) => {
         console.log(result.length === 0); //如果查不到数据，则是空数组,长度为0
           
         if(result.length === 0) {
-            conn.query(sql, [params.username, params.password], function(err, result) {
+            conn.query(sql, [params.username, params.password, params.user_type], function(err, result) {
                 if(err) {
                     console.log(err);
                 }
@@ -97,8 +104,11 @@ router.post('/selectAll',(req, res) => {
     var params = req.body;
     conn.query('SELECT username from user', function(err, result) {
         if(err) {
-            console.log(err);
-            res.send(500,{error: '出错'});
+            console.log(err.sqlMessage);
+            res.json({
+                code: 5000,
+                msg: err.sqlMessage
+            })
         }
         if(result) {
             jsonWrite(res, result);
@@ -123,5 +133,55 @@ router.post('/select', (req, res) => {
         }
     })
 })
+
+router.post('/changePwd', (req, res) => {
+    var params = req.body;
+    /*
+    params: {
+        username: '...',
+        oldPassword: '...',
+        newPassword: '...'
+    }
+    */
+    var sql1 = `SELECT * from user where username = ? and password = ?`;
+    var sql2 = 'UPDATE user SET password = ? where username = ?'
+    var pwd= '';
+    conn.query(sql1,[params.username,params.oldPassword],function(err, result){
+        if(err) {
+            console.log(err.sqlMessage);
+            res.json({
+                code: 5000,
+                msg: err.sqlMessage
+            })
+        }
+        if(result) {
+            if(result.length ===0) {
+                res.json({
+                    code: 5001,
+                    msg: '原密码与用户名不匹配'
+                })
+                return ;
+            }
+            conn.query(sql2,[params.newPassword, params.username], function(err, result){
+                if(err) {
+                    console.log(err.sqlMessage);
+                        res.json({
+                            code: '5000',
+                            msg: err.sqlMessage
+                        })
+                }
+                if(result) {
+                    res.json({
+                        code: 200,
+                        data: result,
+                        msg: '修改成功'
+                    })
+                }
+            })
+        }
+    })
+})
+
+
 
 module.exports = router;

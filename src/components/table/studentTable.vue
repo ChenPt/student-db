@@ -3,7 +3,9 @@
     <el-table
     :data="tData"
     border
-    style="width: 100%;margin-top: 20px">
+    style="width: 100%;margin-top: 20px0"
+    :default-sort = "{prop: 'sno', order: 'descending'}"
+    >
         <el-table-column
             type="selection"
             width="55">
@@ -11,7 +13,8 @@
         <el-table-column
             prop="sno"
             label="学号"
-            width="120">
+            width="120"
+            sortable>
         </el-table-column>
         <el-table-column
             prop="sname"
@@ -58,17 +61,6 @@
             label="入学时间"
             width="150">
         </el-table-column>
-        <el-table-column label="操作">
-            <template slot-scope="scope">
-                <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-            </template>
-        </el-table-column>
     </el-table> 
 </div>
 </template>
@@ -83,7 +75,7 @@
             }
         },
         created(){
-            console.log(this.tdata);
+            console.log(this.tData);
         },
         methods: {
             handleEdit(idx, row) {

@@ -7,7 +7,7 @@
 			<el-main>
 				<el-row>
 					<el-col :span="12" :offset="6">
-						<el-input type="text" name="username" v-model="username" placeholder="输入姓名" clearable></el-input>
+						<el-input type="text" name="username" v-model="username" placeholder="输入账号" clearable></el-input>
 					</el-col>
 				</el-row>
 
@@ -59,7 +59,8 @@
 				console.log(this.md5_pwd);
 				this.$http.post('/api/user/register', {
 					username: username,
-					password: password
+					password: password,
+					user_type: 0
 				}).then((res) => {
 
 					console.log(res.body);

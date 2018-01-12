@@ -19,7 +19,7 @@
 
 <script>
     export default {
-		name: 'searchS',
+		name: 'searchInput',
 		data() {
 			return {
 				form: {
@@ -43,6 +43,7 @@
 					value2: valueArr[1],
 					num: this.form.num
 				}
+				console.log(formArr);
 				//对输入为空的处理
 				if(this.form.key==='' || this.form.value ==='') {
 					this.showErr('输入不能为空');
