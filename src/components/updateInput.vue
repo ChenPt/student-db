@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-row>
-            <el-col :span="5">
+            <el-col :span="10" :offset="6">
                 <el-form :model="form" class="demo-form-inline">
                     <el-form-item label="需要更新的属性列">
                         <el-input v-model="form.attr" placeholder="属性列的名字"></el-input>
@@ -21,7 +21,7 @@
                     </el-form-item>
                 </el-form>
             </el-col>
-            <el-col :span="20">
+            <el-col :span="10" :offset="6">
                 <p class="tips"><span style="color: red;">提示：</span>如果想更新此表的全部数据的某个属性列，则不用写查询条件和匹配值</p>
             </el-col>
         </el-row>

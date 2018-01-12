@@ -3,22 +3,22 @@
 	<div>
 		<img src="../assets/logo.png">
 		<el-container>
-			<el-header>欢迎来到学生信息管理系统</el-header>
+			<el-header class="helloTitle">欢迎来到学生信息管理系统</el-header>
 			<el-main>
 				<el-row>
 					<el-col :span="12" :offset="6">
-						<el-input type="text" name="username" v-model="username" placeholder="输入账号" clearable></el-input>
+						<el-input type="text" name="username" v-model="username" placeholder="输入账号" clearable class="input"></el-input>
 					</el-col>
 				</el-row>
 
 				<el-row>
 					<el-col :span="12" :offset="6">
-						<el-input type="password" name="password" v-model="password" placeholder="输入密码" clearable></el-input>
+						<el-input type="password" name="password" v-model="password" placeholder="输入密码" clearable class="input"></el-input>
 					</el-col>
 				</el-row>
 				
-				<el-button @click="register" type="primary">注册</el-button>
-				<el-button @click="login" type="primary">登录</el-button>
+				<el-button @click="register" type="primary" class="button">注册</el-button>
+				<el-button @click="login" type="primary" class="button">登录</el-button>
 			</el-main>
 		</el-container>
 		
@@ -114,6 +114,17 @@
 </script>
 
 <style scoped>
+	.button {
+		margin-top: 20px;
+	}
 
+	.input {
+		margin-top: 10px;
+	}
+
+	.helloTitle {
+		font-weight: bolder;
+		font-size: 20px;
+	}
 </style>
 

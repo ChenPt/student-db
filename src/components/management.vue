@@ -8,10 +8,10 @@
 						<h1>学生信息管理系统</h1>
 					</el-col>
 					<el-col :span="10">
-						<p>您的账号为<span class="username">{{ user.username }}</span> 账号类型: <span>{{userMap[user.user_type]}}</span></p>
+						<p>您的账号为<span class="username">{{ user.username }}</span>账号类型: <span>{{userMap[user.user_type]}}</span></p>
 					</el-col>
 					<el-col :span="4">
-						<el-button @click="gotoPwd">修改密码</el-button>
+						<el-button @click="gotoPwd" class="pwd-button">修改密码</el-button>
 					</el-col>
 				</el-row>
             </el-header>
@@ -359,18 +359,27 @@
         min-height: 300px;
     }
     .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-  
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
+	.el-container:nth-child(6) .el-aside {
+		line-height: 260px;
+	}
+	
+	.el-container:nth-child(7) .el-aside {
+		line-height: 320px;
+	}
 
-  .username {
-	  color: #409EFF;
-  }
-  .sno-commit-btn {
-	  margin: 25px 0;
-  }
+	.username {
+		font-size: 16px;
+		font-weight: bolder;
+		padding-left: 10px;
+		margin-right: 20px;
+		color: #409EFF;
+	}
+	.sno-commit-btn {
+		margin: 25px 0;
+	}
+
+	.pwd-button {
+		line-height: 10px;
+	}
+
 </style>
