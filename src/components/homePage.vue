@@ -6,13 +6,13 @@
 			<el-header class="helloTitle">欢迎来到学生信息管理系统</el-header>
 			<el-main>
 				<el-row>
-					<el-col :span="12" :offset="6">
+					<el-col :span="6" :offset="9">
 						<el-input type="text" name="username" v-model="username" placeholder="输入账号" clearable class="input"></el-input>
 					</el-col>
 				</el-row>
 
 				<el-row>
-					<el-col :span="12" :offset="6">
+					<el-col :span="6" :offset="9">
 						<el-input type="password" name="password" v-model="password" placeholder="输入密码" clearable class="input"></el-input>
 					</el-col>
 				</el-row>
