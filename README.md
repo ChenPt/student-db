@@ -11,5 +11,5 @@
 ``` bash
 1. npm install
 2. npm run dev      //开启开发模式,监听8080端口
-3. node server/index.js   //启动服务端,监听3000端口, MySQL占用3006端口
+3. node server/index.js   //启动服务端,监听3000端口, MySQL占用3306端口
 ```
