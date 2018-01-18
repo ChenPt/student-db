@@ -10,8 +10,11 @@
                                 <el-form-item label="密码">
                                     <el-input type="password" v-model="form.password"></el-input>
                                 </el-form-item>
-                                <el-form-item label="用户类型" >
-                                    <el-input v-model="form.user_type" placeholder="0为学生，1为老师，2为管理员"></el-input>
+                                <el-form-item label="用户类型">
+                                    <el-select v-model="form.user_type" placeholder="请选择用户类型">
+                                    <el-option label="学生" value="0"></el-option>
+                                    <el-option label="教师" value="1"></el-option>
+                                    </el-select>
                                 </el-form-item>
                                 <p class="tips">用户类型说明(0为学生，1为老师，2为管理员)</p>
                     </el-form>
