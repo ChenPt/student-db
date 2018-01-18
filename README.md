@@ -1,21 +1,15 @@
 # student-db
 
-> A Vue.js project
 
-## Build Setup
+- 使用vue-cli搭建框架  
+- 使用express来提供接口  
+- 数据库使用MySQL
+- 使用Vue router
+- 组件库使用Element UI
 
+## 使用说明
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+1. npm install
+2. npm run dev      //开启开发模式,监听8080端口
+3. node server/index.js   //启动服务端,监听3000端口, MySQL占用3006端口
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
